@@ -1,4 +1,0 @@
-PyMuPDF
-Pillow
-opencv-python
-numpy
