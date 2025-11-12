@@ -1,0 +1,89 @@
+# Python bytecode and caches
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment files
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Logs
+*.log
+logs/
+**/logs/
+backend/test-results/
+backend/test-logs/
+
+# Tests and coverage
+.pytest_cache/
+**/.pytest_cache/
+.coverage
+htmlcov/
+**/htmlcov/
+
+# Temporary files
+.tmp/
+.temp/
+tmp/
+temp/
+*.tmp
+**/.tmp/
+**/.temp/
+**/tmp/
+**/temp/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+
+# Shared libraries
+*.so
+
+# Virtual environments
+.env/
+venv/
+.venv/
+env.bak/
+venv.bak/
+**/.env/
+**/venv/
+**/.venv/
+**/env.bak/
+**/venv.bak/
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+**/.DS_Store
+**/Thumbs.db
+.vscode/
+.idea/
+**/.vscode/
+**/.idea/
+*.swp
+*.swo
+
+# Git
+.git
+.gitignore
+**/.git
+**/.gitignore
+
+# Docker
+Dockerfile*
+.dockerignore
+**/Dockerfile*
+**/.dockerignore
+
+# Documentation (optional to shrink context)
+README.md
+**/README.md
+*.md
+**/*.md
