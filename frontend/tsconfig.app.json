@@ -24,7 +24,9 @@
       "@hooks/*": ["./src/hooks/*"],
       "@router/*": ["./src/router/*"],
       "@layout/*": ["./src/layout/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@store/*": ["./src/store/*"],
+      "@utils/*": ["./src/utils/*"],
     },
 
     /* Linting */

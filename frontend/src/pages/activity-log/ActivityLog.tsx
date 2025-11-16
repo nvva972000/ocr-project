@@ -1,13 +1,15 @@
 import React, { useState, useMemo, useCallback } from "react";
-import { Table, Pagination, Button, message, Tag } from "antd";
+import { Table, Pagination, Button, Tag } from "antd";
 import { ReloadOutlined, DownloadOutlined } from "@ant-design/icons";
-import { usePagination } from "@hooks/usePagination";
-import { useDebounce } from "@hooks/useDebounce";
+import { usePagination } from "@/hooks/common/usePagination";
+import { useDebounce } from "@/hooks/common/useDebounce";
 import { buildActivityLogColumns } from "./tableConfig";
-import type { ActivityLogType } from "@types/types";
 import HeaderInformation from "@components/common/HeaderInformation";
 import InputFilter from "@components/common/InputFilter";
-import { UserContainer, FilterContainer } from "@pages/users/Users";
+import type { ActivityLogType } from "@/types/types";
+import { MainContainer, FilterContainer } from "@/components/layout/MainContainer.styles";
+import { useAppDispatch } from "@/store";
+import { addToast, createToast } from "@/store/slices/toast_slice";
 
 // Mock data - will be replaced with actual API calls
 const mockActivityLogs: ActivityLogType[] = [
@@ -72,6 +74,7 @@ const mockActivityLogs: ActivityLogType[] = [
 ];
 
 const ActivityLog: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { page, pageSize, setPage, setPageSize } = usePagination(1, 10);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -106,12 +109,12 @@ const ActivityLog: React.FC = () => {
     // Simulate API call
     setTimeout(() => {
       setLoading(false);
-      message.success("Activity log refreshed");
+      dispatch(addToast(createToast.success("Activity log refreshed")));
     }, 1000);
   };
 
   const handleExport = () => {
-    message.info("Exporting activity log...");
+    dispatch(addToast(createToast.info("Export Activity Log", "Exporting activity log...")));
   };
 
   const columns = useMemo(
@@ -120,7 +123,7 @@ const ActivityLog: React.FC = () => {
   );
 
   return (
-    <UserContainer>
+    <MainContainer>
       <HeaderInformation
         title="Activity Log"
         description="View system activity and user actions"
@@ -200,7 +203,7 @@ const ActivityLog: React.FC = () => {
           boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)"
         }}
       />
-    </UserContainer>
+    </MainContainer>
   );
 };
 

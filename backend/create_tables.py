@@ -1,11 +1,11 @@
-from database import Base, engine
-import model.session
-import model.user
-import model.role
-import model.user_roles
-import model.feature
-import model.feature_operation
-import model.permission
+from app.db.session import engine
+from app.db.base import Base
+# Import all models to register them
+from app.models import (
+    User, Role, Session, user_roles,
+    Permission, Feature, FeatureOperation
+)
+from app.models.otp import OTP
 
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
