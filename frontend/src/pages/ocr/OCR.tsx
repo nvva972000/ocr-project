@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { SwapRightOutlined } from "@ant-design/icons";
-import { OCRContainer, OCRContent, ConvertButton } from "./OCR.styles";
+import { OCRContent, ConvertButton } from "./OCR.styles";
 import HeaderInformation from "@components/common/HeaderInformation";
 import PDFViewer from "./components/PDFViewer";
 import ExtractedData from "./components/ExtractedData";
 import OCRFooterComponent from "./components/OCRFooter";
 import "./OCR.css";
 import { Card } from "antd";
+import { MainContainer } from "@/components/layout/MainContainer.styles";
 
 const OCR: React.FC = () => {
   const [extractProgress, setExtractProgress] = useState(0);
@@ -56,7 +57,7 @@ const OCR: React.FC = () => {
   };
 
   return (
-    <OCRContainer>
+    <MainContainer>
       <HeaderInformation
         title="OCR"
         description="OCR: Optical Character Recognition"
@@ -82,7 +83,7 @@ const OCR: React.FC = () => {
           onApprove={handleApprove}
         />
       </Card>
-    </OCRContainer>
+    </MainContainer>
   );
 };
 

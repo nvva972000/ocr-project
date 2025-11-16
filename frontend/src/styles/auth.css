@@ -1,0 +1,14 @@
+/* Auth page styles */
+.auth-container {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 20px;
+}
+
+.auth-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+

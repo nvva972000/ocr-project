@@ -3,12 +3,14 @@
 backend/uploads/*
 !backend/uploads/.gitkeep
 backend/__pycache__/
-backend/*.pyc
-backend/*.pyo
-backend/*.pyd
+backend/**/*.pyc
+backend/**/*.pyo
+backend/**/*.pyd
 backend/.Python
 backend/env/
 backend/venv/
+backend/.env
+backend/.env.local
 
 # Frontend
 node_modules/
@@ -16,6 +18,7 @@ frontend/dist/
 frontend/.vite/
 frontend/.env
 frontend/.env.local
+frontend/package-lock.json
 
 # IDE
 .vscode/
@@ -37,4 +40,3 @@ yarn-error.log*
 # Temp files
 *.tmp
 *.temp
-
