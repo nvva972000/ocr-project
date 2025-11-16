@@ -5,15 +5,17 @@ from app.core.config import settings
 
 # URL encode the password to handle special characters
 encoded_password = quote_plus(settings.DB_PASSWORD)
-# PostgreSQL connection string
-DATABASE_URL = f"postgresql://{settings.DB_USER}:{encoded_password}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}"
+# MySQL connection string (using mysqlclient)
+DATABASE_URL = f"mysql://{settings.DB_USER}:{encoded_password}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}?charset=utf8mb4"
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
+
 
 @event.listens_for(engine, "connect")
 def set_time_zone(dbapi_connection, connection_record):
     pass
-    
+
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
@@ -24,4 +26,3 @@ def get_db():
         yield db
     finally:
         db.close()
-

@@ -1,22 +1,24 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:15-alpine
-    container_name: ocr_db
+  mysql:
+    image: mysql:8.0
+    container_name: ocr_database
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123@
-      POSTGRES_DB: ocr_database
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123@
+      MYSQL_ROOT_PASSWORD: admin123@
+      MYSQL_DATABASE: ocr_database
     ports:
-      - "55432:5432"
+      - "3306:3306"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "admin", "-padmin123@"]
       interval: 10s
       timeout: 5s
       retries: 5
+    command: --default-authentication-plugin=mysql_native_password
 
 volumes:
-  postgres_data:
+  mysql_data:
